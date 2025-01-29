@@ -41,7 +41,7 @@ export class UserDataService {
   private initializeUserData() : void {
     const storedData = localStorage.getItem('userData');
     if (storedData) {
-      // Parse and store in a class property
+     
       this.userData = JSON.parse(storedData);
   } else {
       this.userData = this.defaultUserData;
@@ -52,6 +52,16 @@ export class UserDataService {
   
   saveUserData() {
     localStorage.setItem('userData', JSON.stringify(this.userData));
+  }
+
+  getUserData() {
+    return this.userData;
+  }
+
+
+  addWorkout(user: {id: number; name: string; workouts: Array<{type: string; minutes: number}>}){
+    this.userData.push(user);
+    this.saveUserData(); 
   }
 
 }
