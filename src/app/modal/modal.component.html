@@ -12,7 +12,7 @@
       <label class="block text-sm font-medium text-gray-600">Name</label>
       <input
         type="text"
-       
+        [(ngModel)]="userName"
         class="mt-1 p-2 w-full border border-gray-300 rounded-md"
         placeholder="Enter your name"
       />
@@ -22,7 +22,7 @@
       <!-- Select for workout type -->
       <label class="block text-sm font-medium text-gray-600">Workout Type</label>
       <select
-        
+        [(ngModel)]="workoutType"
         class="mt-1 p-2 w-full border border-gray-300 rounded-md"
       >
         <option value="Cardio">Cardio</option>
@@ -36,7 +36,7 @@
       <label class="block text-sm font-medium text-gray-600">Workout Minutes</label>
       <input
         type="number"
-       
+        [(ngModel)]="workoutMinutes"
         class="mt-1 p-2 w-full border border-gray-300 rounded-md"
         placeholder="Enter workout minutes"
       />
@@ -50,10 +50,10 @@
         Cancel
       </button>
       <button
-       
+        (click)="confirmAction()"
         class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
       >
-        Confirm
+        Add workout
       </button>
     </div>
   </div>
