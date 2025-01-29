@@ -1,1 +1,62 @@
-<p>modal works!</p>
+
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 flex items-center justify-center  bg-opacity-50"
+>
+  <!-- Modal Content -->
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-semibold">Workout Details</h2>
+
+    <div class="mt-4">
+      <!-- Input for user name -->
+      <label class="block text-sm font-medium text-gray-600">Name</label>
+      <input
+        type="text"
+       
+        class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+        placeholder="Enter your name"
+      />
+    </div>
+
+    <div class="mt-4">
+      <!-- Select for workout type -->
+      <label class="block text-sm font-medium text-gray-600">Workout Type</label>
+      <select
+        
+        class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+      >
+        <option value="Cardio">Cardio</option>
+        <option value="Strength">Strength</option>
+        <option value="Yoga">Yoga</option>
+      </select>
+    </div>
+
+    <div class="mt-4">
+      <!-- Input for workout minutes -->
+      <label class="block text-sm font-medium text-gray-600">Workout Minutes</label>
+      <input
+        type="number"
+       
+        class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+        placeholder="Enter workout minutes"
+      />
+    </div>
+
+    <div class="mt-4 flex justify-end space-x-2">
+      <button
+        (click)="closeModal()"
+        class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+      >
+        Cancel
+      </button>
+      <button
+       
+        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+

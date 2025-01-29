@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -12,7 +13,9 @@ import { ModalComponent } from './modal/modal.component';
 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule
+    
   ],
   bootstrap: [AppComponent]
 })

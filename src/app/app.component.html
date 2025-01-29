@@ -1,6 +1,9 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<button
+(click)="modal.openModal()"
+class="px-4 py-2 shadow-md text-black rounded-lg hover:bg-neutral-200"
 
+>
+  Open modal
+</button>
 
-<router-outlet />
+<app-modal #modal></app-modal>
