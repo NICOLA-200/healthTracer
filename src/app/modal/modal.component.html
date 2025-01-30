@@ -2,9 +2,11 @@
 <div
   *ngIf="isOpen"
   class="fixed inset-0 flex items-center justify-center  bg-opacity-50"
+
 >
+<div class="absolute inset-0 -z-10 bg-black opacity-80"></div>
   <!-- Modal Content -->
-  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+  <div class="bg-white p-6 rounded-lg z-50 shadow-lg w-96">
     <h2 class="text-xl font-semibold">Workout Details</h2>
 
     <div class="mt-4">

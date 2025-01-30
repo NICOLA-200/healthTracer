@@ -1,100 +1,106 @@
-<div class="p-6 bg-gray-50 min-h-screen flex flex-col items-center">
-  <!-- Add Workout Button -->
-  <button
-    (click)="modal.openModal()"
-    class="px-6 py-3 text-white font-medium bg-blue-600 hover:bg-blue-700 shadow-lg rounded-lg transition-all"
-  >
-    + Add Workout
-  </button>
+<div class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <div class="relative h-[40vh] bg-gradient-to-r from-blue-500 to-blue-700 text-white flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Elevate Your Fitness Journey</h1>
+    <p class="text-lg md:text-xl max-w-2xl">Track, manage, and optimize your workouts with ease. Stay consistent, challenge yourself, and achieve your goals.</p>
+    <button
+      (click)="modal.openModal()"
+      class="mt-6  px-6 py-3 text-blue-700 font-medium bg-white hover:bg-gray-100 shadow-lg rounded-lg transition-all"
+    >
+      + Add Workout
+    </button>
+   
+  </div>
 
-  <!-- Search and Filter Section -->
-  <div class="w-full max-w-3xl mt-6 p-4 bg-white shadow-md rounded-lg">
-    <div class="flex flex-wrap gap-4 mb-4">
-      <input
-        type="text"
-        pInputText
-        [(ngModel)]="searchQuery"
-        placeholder="Search"
-        class="p-3 w-full md:w-auto border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400"
-      />
+  <!-- Main Content Section -->
+  <div class="p-6 flex flex-col items-center">
+    <div class="w-full max-w-3xl mt-6 p-4 bg-white shadow-md rounded-lg">
+      <!-- Search & Filter -->
+      <div class="flex flex-wrap gap-4 mb-4">
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="searchQuery"
+          placeholder="Search"
+          class="p-3 w-full md:w-auto border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400"
+        />
+        <select
+          [(ngModel)]="workoutFilter"
+          class="p-3 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400"
+        >
+          <option value="All">All</option>
+          <option value="Running">Running</option>
+          <option value="Cycling">Cycling</option>
+          <option value="Yoga">Yoga</option>
+          <option value="Swimming">Swimming</option>
+        </select>
+      </div>
 
-      <select
-        [(ngModel)]="workoutFilter"
-        class="p-3 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400"
-      >
-        <option value="All">All</option>
-        <option value="Running">Running</option>
-        <option value="Cycling">Cycling</option>
-        <option value="Yoga">Yoga</option>
-        <option value="Swimming">Swimming</option>
-      </select>
+      <!-- Workout Table -->
+      <p-table [value]="filteredUsers" [paginator]="true" [rows]="5" class="shadow-md rounded-lg overflow-hidden">
+        <ng-template pTemplate="header">
+          <tr class="bg-blue-100 text-blue-900 font-semibold">
+            <th class="p-4 border border-gray-200">Name</th>
+            <th class="p-4 border border-gray-200">Workouts</th>
+            <th class="p-4 border border-gray-200">Number of Workouts</th>
+            <th class="p-4 border border-gray-200">Total Workout Minutes</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-user>
+          <tr class="border-b border-gray-200 hover:bg-blue-50 transition-all">
+            <td class="p-4 border border-gray-200">{{ user.name }}</td>
+            <td class="p-4 border border-gray-200">{{ getWorkoutTypes(user.workouts) }}</td>
+            <td class="p-4 border border-gray-200">{{ getWorkoutCount(user.workouts) }}</td>
+            <td class="p-4 border border-gray-200">{{ getTotalMinutes(user.workouts) }}</td>
+          </tr>
+        </ng-template>
+
+        <!-- Paginator -->
+        <ng-template pTemplate="paginator" let-state>
+          <div class="p-paginator flex justify-center items-center mt-4 space-x-2">
+            <button
+              type="button"
+              (click)="state.onFirstPage()"
+              [disabled]="state.isFirstPage"
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
+            >
+              ⏮ First
+            </button>
+
+            <button
+              type="button"
+              (click)="state.onPrevPage()"
+              [disabled]="state.isFirstPage"
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
+            >
+              ◀ Prev
+            </button>
+
+            <span class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm">{{ state.currentPage + 1 }}</span>
+
+            <button
+              type="button"
+              (click)="state.onNextPage()"
+              [disabled]="state.isLastPage"
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
+            >
+              Next ▶
+            </button>
+
+            <button
+              type="button"
+              (click)="state.onLastPage()"
+              [disabled]="state.isLastPage"
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
+            >
+              Last ⏭
+            </button>
+          </div>
+        </ng-template>
+      </p-table>
     </div>
-
-    <!-- Workout Table -->
-    <p-table [value]="filteredUsers" [paginator]="true" [rows]="5" class="shadow-md rounded-lg overflow-hidden">
-      <ng-template pTemplate="header">
-        <tr class="bg-blue-100 text-blue-900 font-semibold">
-          <th class="p-4 border border-gray-200">Name</th>
-          <th class="p-4 border border-gray-200">Workouts</th>
-          <th class="p-4 border border-gray-200">Number of Workouts</th>
-          <th class="p-4 border border-gray-200">Total Workout Minutes</th>
-        </tr>
-      </ng-template>
-
-      <ng-template pTemplate="body" let-user>
-        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-all">
-          <td class="p-4 border border-gray-200">{{ user.name }}</td>
-          <td class="p-4 border border-gray-200">{{ getWorkoutTypes(user.workouts) }}</td>
-          <td class="p-4 border border-gray-200">{{ getWorkoutCount(user.workouts) }}</td>
-          <td class="p-4 border border-gray-200">{{ getTotalMinutes(user.workouts) }}</td>
-        </tr>
-      </ng-template>
-
-      <!-- Paginator -->
-      <ng-template pTemplate="paginator" let-state>
-        <div class="p-paginator flex justify-center items-center mt-4 space-x-2">
-          <button
-            type="button"
-            (click)="state.onFirstPage()"
-            [disabled]="state.isFirstPage"
-            class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
-          >
-            ⏮ First
-          </button>
-
-          <button
-            type="button"
-            (click)="state.onPrevPage()"
-            [disabled]="state.isFirstPage"
-            class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
-          >
-            ◀ Prev
-          </button>
-
-          <span class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm">{{ state.currentPage + 1 }}</span>
-
-          <button
-            type="button"
-            (click)="state.onNextPage()"
-            [disabled]="state.isLastPage"
-            class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
-          >
-            Next ▶
-          </button>
-
-          <button
-            type="button"
-            (click)="state.onLastPage()"
-            [disabled]="state.isLastPage"
-            class="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-300 disabled:opacity-50"
-          >
-            Last ⏭
-          </button>
-        </div>
-      </ng-template>
-    </p-table>
   </div>
 </div>
 
-<!-- Modal Component -->
 <app-modal #modal></app-modal>
