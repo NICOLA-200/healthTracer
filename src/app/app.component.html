@@ -7,10 +7,10 @@ class="px-4 py-2 shadow-md text-black rounded-lg hover:bg-neutral-200"
 </button>
 
 <div class="p-4">
-  <!-- <div class="flex gap-4 mb-4">
+  <div class="flex gap-4 mb-4">
     <input type="text" pInputText [(ngModel)]="searchQuery" placeholder="Search" class="p-inputtext p-component" />
     <p-dropdown [options]="['All', 'Running', 'Cycling', 'Swimming', 'Yoga']" [(ngModel)]="workoutFilter"></p-dropdown>
-  </div> -->
+  </div> 
 
   <p-table [value]="userData" [paginator]="true" [rows]="10" class="shadow-md rounded-lg overflow-hidden">
     <ng-template pTemplate="header">
