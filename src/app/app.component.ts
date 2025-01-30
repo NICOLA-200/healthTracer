@@ -14,8 +14,21 @@ export class AppComponent implements OnInit {
   constructor(private userDataService: UserDataService) {
   }
 
+  getWorkoutTypes(workouts: any[]) {
+    return workouts.map(w => w.type).join(', ');
+  }
+
+  getWorkoutCount(workouts: any[]) {
+    return workouts.length;
+  }
+
+  getTotalMinutes(workouts: any[]) {
+    return workouts.reduce((sum, w) => sum + w.minutes, 0);
+  }
+
   ngOnInit(): void {
     this.userData = this.userDataService.getUserData();
+    console.log(this.userData)
   }
 
 
