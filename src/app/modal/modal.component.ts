@@ -41,6 +41,13 @@ export class ModalComponent   {
   }
 
   confirmAction(): void {
+    //validate user input
+    if (!this.userName) {
+      alert('Please enter your name.');
+      return
+    }
+
+    
     // Ensure that the workout type and minutes are valid
     if (this.workoutType && !isNaN(this.workoutMinutes)) {
       
@@ -67,6 +74,8 @@ export class ModalComponent   {
         workoutType: this.workoutType,
         workoutMinutes: this.workoutMinutes,
       });
+    } else {
+      alert('Input correct data!') 
     }
   }
   
