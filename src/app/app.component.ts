@@ -11,6 +11,7 @@ import { User } from './data/type';
 export class AppComponent implements OnInit {
   title = 'healthTracer';
   userData: User[] = []
+  
 
   searchQuery: string = '';
   workoutFilter: string = 'All';

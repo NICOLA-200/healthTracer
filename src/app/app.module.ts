@@ -10,6 +10,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { PaginatorModule } from 'primeng/paginator';
     TableModule,
     DropdownModule,
     InputTextModule,
-    PaginatorModule
+    PaginatorModule,
+    BrowserAnimationsModule
    
     
     
