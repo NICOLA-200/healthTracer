@@ -45,6 +45,6 @@ The Health Tracer application helps users keep track of their fitness activities
    ```bash
    git clone [https://github.com/NICOLA-200/health-tracer.git](https://www.google.com/search?q=https://github.com/NICOLA-200/health-tracer.git)  # Replace with your repository URL
    cd health-tracer
-
+``
    ```bash
    npm install
