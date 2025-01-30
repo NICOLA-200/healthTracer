@@ -43,16 +43,16 @@ export class AppComponent implements OnInit {
   }
   
 
-  getWorkoutTypes(workouts: any[]) {
-    return workouts.map(w => w.type).join(', ');
+  getWorkoutTypes(workouts: any[] = []) {
+    return workouts.map(w => w?.type || 'Unknown').join(', ');
   }
-
-  getWorkoutCount(workouts: any[]) {
+  
+  getWorkoutCount(workouts: any[] = []) {
     return workouts.length;
   }
-
-  getTotalMinutes(workouts: any[]) {
-    return workouts.reduce((sum, w) => sum + w.minutes, 0);
+  
+  getTotalMinutes(workouts: any[] = []) {
+    return workouts.reduce((sum, w) => sum + (w?.minutes || 0), 0);
   }
 
   ngOnInit(): void {
