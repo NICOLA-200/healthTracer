@@ -31,17 +31,17 @@ export class AppComponent implements OnInit {
   constructor(private userDataService: UserDataService) {
   }
 
-   get filteredUsers() {
-    console.log(this.workoutFilter)
+  get filteredUsers() {
+    console.log(this.workoutFilter);
     return this.userData
-    .filter(user =>
-      this.workoutFilter === 'All' || user.workouts.some(w => w.type === this.workoutFilter)
-    )
-    .filter(user =>
-       this.searchQuery === '' || user.name.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase())
-    )
-
+      .filter(user =>
+        this.workoutFilter === 'All' || (Array.isArray(user.workouts) && user.workouts.some(w => w?.type === this.workoutFilter))
+      )
+      .filter(user =>
+        this.searchQuery === '' || user?.name?.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
   }
+  
 
   getWorkoutTypes(workouts: any[]) {
     return workouts.map(w => w.type).join(', ');
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userData = this.userDataService.getUserData();
+    this.userData = this.userDataService.getUserData() ?? [];
     console.log(this.userData)
   }
 
