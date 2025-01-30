@@ -1,27 +1,47 @@
-# HealthTracer
+# Health Tracer Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
+This project is a web application for tracking and managing workout data.  Users can view, filter, and search workout information.  This README provides instructions for running the application locally and describes the project's features and technologies used.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Description](#description)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Data](#data)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Code scaffolding
+## Description
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The Health Tracer application helps users keep track of their fitness activities.  It provides a user-friendly interface to view workout details, filter workouts by type, and search for specific workouts or users.  The application uses Angular for the frontend, PrimeNG for UI components, and Tailwind CSS for styling.  Data is currently mock data, but the application is designed to be easily integrated with a backend API in the future.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Workout Display:** Displays a table of workout data, including user name, workout types, number of workouts, and total workout minutes.
+- **Filtering:** Allows users to filter workouts by type (e.g., Running, Cycling, Swimming, Yoga).
+- **Search:** Enables users to search for workouts or users by name.
+- **Pagination:** Implements pagination to handle large datasets of workout information.
+- **Add Workout (Modal):**  Provides a modal dialog to add new workouts (currently a placeholder, but ready for implementation).
+- **Responsive Design:**  The application is designed to be responsive and work well on different screen sizes.
 
-## Running unit tests
+## Technologies Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Frontend:**
+    - Angular (v16 or later)
+    - PrimeNG (v16 or later) - UI component library
+    - Tailwind CSS - Styling framework
+- **Other:**
+    - TypeScript
+    - HTML
+    - CSS
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the Repository:**
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   git clone [https://github.com/NICOLA-200/health-tracer.git](https://www.google.com/search?q=https://github.com/NICOLA-200/health-tracer.git)  # Replace with your repository URL
+   cd health-tracer
