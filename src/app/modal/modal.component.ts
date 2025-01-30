@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../service/user-data.service';
 import  { v4 as uuid4 } from 'uuid';
+import { User } from '../data/type';
 
 
-interface Workout {
-  type: string;
-  minutes: number;
-}
 
-// Define the interface for a user
-interface User {
-  id: number;
-  name: string;
-  workouts: Workout[];
-}
 
 @Component({
   selector: 'app-modal',
@@ -21,7 +12,7 @@ interface User {
   styleUrl: './modal.component.css',
   
 })
-export class ModalComponent implements OnInit  {
+export class ModalComponent   {
   isOpen =  false;
   
   userName: string = '';
@@ -33,14 +24,12 @@ export class ModalComponent implements OnInit  {
    
  
 
-   userData: User[] = []
+  
 
   constructor(private userDataService: UserDataService ) {
   }
 
-  ngOnInit(): void {
-    this.userData = this.userDataService.getUserData();
-  }
+
   
   openModal() : void {
     this.isOpen = true;
@@ -69,9 +58,6 @@ export class ModalComponent implements OnInit  {
       
       // Call the addWorkout method from your userDataService
       this.userDataService.addWorkout(user);
-  
-      // Refresh the user data from the service
-      this.userData = this.userDataService.getUserData();
   
       // Close the modal
       this.closeModal();
