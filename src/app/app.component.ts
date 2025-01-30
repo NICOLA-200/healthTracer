@@ -14,28 +14,33 @@ export class AppComponent implements OnInit {
 
   workouts: { name: string, value: string }[] = [
     { name: 'All', value: 'All' },
-    { name: 'Running', value: 'running' },
-    { name: 'Cycling', value: 'cycling' },
-    { name: 'Swimming', value: 'swimming' },
-    { name: 'Yoga', value: 'yoga' }
+    { name: 'Running', value: 'Running' },
+    { name: 'Cycling', value: 'Cycling' },
+    { name: 'Swimming', value: 'Swimming' },
+    { name: 'Yoga', value: 'Yoga' }
   ];
 
 
   searchQuery: string = '';
   workoutFilter: string = 'All';
+  
+
+
 
 
   constructor(private userDataService: UserDataService) {
   }
 
-  get filteredUsers() {
+   get filteredUsers() {
+    console.log(this.workoutFilter)
     return this.userData
-    .filter(user =>
-       this.searchQuery === '' || user.name.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase())
-    )
     .filter(user =>
       this.workoutFilter === 'All' || user.workouts.some(w => w.type === this.workoutFilter)
     )
+    .filter(user =>
+       this.searchQuery === '' || user.name.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase())
+    )
+
   }
 
   getWorkoutTypes(workouts: any[]) {
